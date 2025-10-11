@@ -5,49 +5,121 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    background-color: #121212; /* Un fondo negro/gris oscuro, como en la imagen */
     color: #ffffff; /* Color de texto principal blanco */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    overflow: hidden; /* Evita barras de desplazamiento si el fondo es muy grande */
+
+    /* Fondo degradado con azul oscuro y violeta oscuro y textura sutil */
+    background: radial-gradient(circle at center, #2a0a4c 0%, #0a0a2a 100%); /* Degradado de violeta a azul oscuro */
+    background-size: cover; /* Asegura que cubra todo el espacio */
+    position: relative; /* Necesario para la capa de textura */
 }
 
+/* Capa de textura sutil sobre el fondo degradado */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 5px 5px; /* Tamaño de los puntos o la repetición de la textura */
+    opacity: 0.7; /* Suaviza la textura */
+    pointer-events: none; /* Asegura que no interfiera con los clics */
+    z-index: -1; /* Manda la textura detrás del contenido */
+}
+
+
 /* --- Contenedor Principal --- */
-/* Este div centrará todo el contenido vertical y horizontalmente */
 .container {
     display: flex;
-    flex-direction: column; /* Apila los elementos verticalmente */
-    align-items: center;   /* Centra los elementos horizontalmente */
-    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px; /* Un poco más de padding general */
+    max-width: 450px; /* Aumenta ligeramente el ancho máximo del contenedor */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
 }
 
 /* --- Estilos de los Elementos --- */
 
-/* Estilo para tu logo */
+/* Estilo para tu logo (Zeus) */
 .logo {
-    max-width: 150px; /* Ajusta el tamaño máximo de tu logo */
-    margin-bottom: 30px; /* Espacio debajo del logo */
+    max-width: 250px; /* ¡Más grande! Ajusta este valor si necesitas más/menos */
+    height: auto;
+    margin-bottom: 50px; /* Más espacio debajo del logo */
+    border-radius: 15px; /* Bordes ligeramente redondeados para el logo si es cuadrado */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada para que el logo resalte */
 }
 
 /* Mensaje principal ("Escríbenos...") */
 .message {
-    font-size: 18px;
-    margin-bottom: 25px; /* Espacio entre el texto y el botón */
-    color: #e0e0e0; /* Un blanco no tan brillante para que no canse la vista */
+    font-size: 22px; /* ¡Fuente más grande! */
+    margin-bottom: 40px; /* Espacio consistente entre el texto y el botón */
+    color: #e0e0e0;
+    line-height: 1.5;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* El botón de WhatsApp */
 .whatsapp-button {
-    display: inline-block;
+    display: flex; /* Usar flexbox para alinear el ícono y el texto */
+    align-items: center; /* Centrar verticalmente el ícono y el texto */
+    justify-content: center; /* Centrar horizontalmente el ícono y el texto */
     background-color: #25D366; /* Color verde oficial de WhatsApp */
     color: #ffffff;
-    padding: 15px 35px; /* Relleno para hacerlo más grande */
-    border-radius: 8px; /* Bordes redondeados */
-    text-decoration: none; /* Quita el subrayado de los enlaces */
+    padding: 18px 45px;
+    border-radius: 10px;
+    text-decoration: none;
     font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave para el hover */
+    font-size: 20px; /* ¡Texto del botón más grande! */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+
+    /* Animación de zoom-in/zoom-out */
+    animation: pulse 2s infinite ease-in-out;
 }
 
-/* Efect
+/* Estilo para el ícono de WhatsApp dentro del botón */
+.whatsapp-button i {
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 24px; /* Tamaño del ícono */
+}
+
+
+/* Efecto al pasar el mouse por encima del botón */
+.whatsapp-button:hover {
+    background-color: #128C7E;
+    transform: scale(1.08);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+    animation: none; /* Detiene la animación de pulso al hacer hover */
+}
+
+/* Keyframes para la animación de zoom-in/zoom-out */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+    }
+}
+
+/* Mensaje del pie de página ("ATENCIÓN Y RETIROS...") */
+.footer-message {
+    margin-top: 60px; /* ¡Más espacio entre el botón y el texto de abajo! */
+    font-size: 14px; /* Fuente del pie de página más grande */
+    color: #b0b0b0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
