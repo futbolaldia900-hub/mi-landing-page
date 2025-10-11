@@ -1,24 +1,28 @@
-/* --- Estilos Globales y del Body --- */
-body, html {
+/* --- ESTILOS GLOBALES --- */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent; /* Evita el destello en móviles al tocar */
+}
+
+html, body {
     width: 100%;
     height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    color: #ffffff; /* Color de texto principal blanco */
+    overflow: hidden; /* Evita el scroll */
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    overflow: hidden; /* Evita barras de desplazamiento si el fondo es muy grande */
-
-    /* Fondo degradado con azul oscuro y violeta oscuro y textura sutil */
-    background: radial-gradient(circle at center, #2a0a4c 0%, #0a0a2a 100%); /* Degradado de violeta a azul oscuro */
-    background-size: cover; /* Asegura que cubra todo el espacio */
-    position: relative; /* Necesario para la capa de textura */
+    color: #ffffff;
+    background: radial-gradient(ellipse at center, #1a2340 0%, #0a0a2a 100%);
+    position: relative;
 }
 
-/* Capa de textura sutil sobre el fondo degradado */
+/* Textura de ruido sutil sobre el fondo */
 body::before {
     content: '';
     position: absolute;
@@ -26,100 +30,119 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 5px 5px; /* Tamaño de los puntos o la repetición de la textura */
-    opacity: 0.7; /* Suaviza la textura */
-    pointer-events: none; /* Asegura que no interfiera con los clics */
-    z-index: -1; /* Manda la textura detrás del contenido */
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+    z-index: 0;
+    pointer-events: none;
 }
 
-
-/* --- Contenedor Principal --- */
+/* --- CONTENEDOR PRINCIPAL --- */
 .container {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px; /* Un poco más de padding general */
-    max-width: 450px; /* Aumenta ligeramente el ancho máximo del contenedor */
-    box-sizing: border-box; /* Incluye padding en el ancho total */
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 450px;
 }
 
-/* --- Estilos de los Elementos --- */
-
-/* Estilo para tu logo (Zeus) */
+/* --- ELEMENTOS --- */
 .logo {
-    max-width: 250px; /* ¡Más grande! Ajusta este valor si necesitas más/menos */
+    width: 180px;  /* Ajusta el tamaño de tu logo si es necesario */
     height: auto;
-    margin-bottom: 50px; /* Más espacio debajo del logo */
-    border-radius: 15px; /* Bordes ligeramente redondeados para el logo si es cuadrado */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada para que el logo resalte */
+    border-radius: 24px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Mensaje principal ("Escríbenos...") */
-.message {
-    font-size: 22px; /* ¡Fuente más grande! */
-    margin-bottom: 40px; /* Espacio consistente entre el texto y el botón */
+.card {
+    background: rgba(42, 42, 42, 0.25); /* Fondo semitransparente */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 35px 30px;
+    width: 100%;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque de fondo */
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.main-text {
+    font-size: 18px;
+    font-weight: 500;
     color: #e0e0e0;
-    line-height: 1.5;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
 }
 
-/* El botón de WhatsApp */
 .whatsapp-button {
-    display: flex; /* Usar flexbox para alinear el ícono y el texto */
-    align-items: center; /* Centrar verticalmente el ícono y el texto */
-    justify-content: center; /* Centrar horizontalmente el ícono y el texto */
-    background-color: #25D366; /* Color verde oficial de WhatsApp */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: 72px;
+    background: linear-gradient(135deg, #25d366, #128C7E);
     color: #ffffff;
-    padding: 18px 45px;
-    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 20px; /* ¡Texto del botón más grande! */
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-
-    /* Animación de zoom-in/zoom-out */
-    animation: pulse 2s infinite ease-in-out;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 25px -8px #25d366;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: pulse 2.5s infinite ease-in-out;
 }
 
-/* Estilo para el ícono de WhatsApp dentro del botón */
-.whatsapp-button i {
-    margin-right: 10px; /* Espacio entre el ícono y el texto */
-    font-size: 24px; /* Tamaño del ícono */
-}
-
-
-/* Efecto al pasar el mouse por encima del botón */
 .whatsapp-button:hover {
-    background-color: #128C7E;
-    transform: scale(1.08);
-    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
-    animation: none; /* Detiene la animación de pulso al hacer hover */
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px -10px #25d366;
+    animation: none; /* Pausa la animación al pasar el mouse */
 }
 
-/* Keyframes para la animación de zoom-in/zoom-out */
+.whatsapp-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.footer-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffd700; /* Color dorado */
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+}
+
+/* --- ANIMACIÓN --- */
 @keyframes pulse {
-    0% {
+    0%, 100% {
         transform: scale(1);
-        box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        box-shadow: 0 8px 25px -8px #25d366;
     }
     50% {
         transform: scale(1.03);
-        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        box-shadow: 0 12px 30px -10px #25d366;
     }
 }
 
-/* Mensaje del pie de página ("ATENCIÓN Y RETIROS...") */
-.footer-message {
-    margin-top: 60px; /* ¡Más espacio entre el botón y el texto de abajo! */
-    font-size: 14px; /* Fuente del pie de página más grande */
-    color: #b0b0b0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+/* --- AJUSTES PARA MÓVILES PEQUEÑOS --- */
+@media (max-width: 380px) {
+    .logo {
+        width: 150px;
+    }
+    .card {
+        padding: 30px 20px;
+    }
+    .whatsapp-button {
+        height: 64px;
+        font-size: 18px;
+    }
+    .whatsapp-icon {
+        width: 28px;
+        height: 28px;
+    }
+    .footer-text {
+        font-size: 13px;
+    }
 }
