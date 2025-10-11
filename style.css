@@ -1,0 +1,53 @@
+/* --- Estilos Globales y del Body --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #121212; /* Un fondo negro/gris oscuro, como en la imagen */
+    color: #ffffff; /* Color de texto principal blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- Contenedor Principal --- */
+/* Este div centrará todo el contenido vertical y horizontalmente */
+.container {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center;   /* Centra los elementos horizontalmente */
+    padding: 20px;
+}
+
+/* --- Estilos de los Elementos --- */
+
+/* Estilo para tu logo */
+.logo {
+    max-width: 150px; /* Ajusta el tamaño máximo de tu logo */
+    margin-bottom: 30px; /* Espacio debajo del logo */
+}
+
+/* Mensaje principal ("Escríbenos...") */
+.message {
+    font-size: 18px;
+    margin-bottom: 25px; /* Espacio entre el texto y el botón */
+    color: #e0e0e0; /* Un blanco no tan brillante para que no canse la vista */
+}
+
+/* El botón de WhatsApp */
+.whatsapp-button {
+    display: inline-block;
+    background-color: #25D366; /* Color verde oficial de WhatsApp */
+    color: #ffffff;
+    padding: 15px 35px; /* Relleno para hacerlo más grande */
+    border-radius: 8px; /* Bordes redondeados */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave para el hover */
+}
+
+/* Efect
