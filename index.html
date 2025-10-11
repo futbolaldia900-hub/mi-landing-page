@@ -13,7 +13,23 @@
     <link rel="stylesheet" href="style.css">
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='80'>🎰</text></svg>">
-</head>
+    
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1946841772846486');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1946841772846486&ev=PageView&noscript=1"
+    /></noscript>
+    </head>
 <body>
 
     <div class="container">
@@ -22,14 +38,6 @@
         <div class="card">
             <p class="main-text">Escribinos apretando el botón de abajo</p>
             
-            <a href="https://wa.me/5492235584369?text=Hola!%20Vengo%20de%20la%20página%20web." target="_blank" class="whatsapp-button">
+            <a href="https://wa.me/5492235584369?text=Hola,%20quiero%20mi%20b0ni" target="_blank" class="whatsapp-button" onclick="fbq('track', 'Lead');">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="whatsapp-icon"/>
-                <span>WHATSAPP OFICIAL</span>
-            </a>
-            
-            <p class="footer-text">ATENCIÓN Y RETIROS SIN LÍMITES LAS 24 HS</p>
-        </div>
-    </div>
-
-</body>
-</html>
+                <span>
